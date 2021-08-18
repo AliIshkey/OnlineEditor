@@ -1,0 +1,35 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+
+    <h2 class="title mt-5">Login to Continue</h2>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2"></div>
+                <div class="col-md-auto">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                        <div class="form">
+                        <label>Name</label>
+                            <input type="text" name="username" placeholder="Username" />
+                            <br />
+                        <label>Password</label>
+                            <input type="password" name="password" placeholder="Password" />
+                            <br />
+                            <button class="btn btn-block btn-primary">Login</button>
+                            <p>Forgot Password?</p>
+                            <a href ="{% url 'reset_password' %}" class="btn btn-primary">Reset Password</a>
+
+                            {% for message in messages %}
+                                <p id="messages">{{message}}</p>
+                            {% endfor %}
+
+                            <p>Don't have a account?</p>
+                                <a href ="{% url 'register' %}" class="btn btn-primary">Register</a>
+                        </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

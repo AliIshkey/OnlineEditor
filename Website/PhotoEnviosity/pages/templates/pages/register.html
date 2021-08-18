@@ -1,0 +1,42 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+
+    <h2 class="title mt-5">Please fill this page to create an account</h2>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2"></div>
+                <div class="col-md-auto">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                        <div class="form">
+                            <label>Name</label>
+                                {{form.username}}
+                                <br />
+                             <label>Email</label>
+                                {{form.email}}
+                                <br />
+                            <label>Password</label>
+                                {{form.password1}}
+                                <br />
+                            <label>Re-password</label>
+                                {{form.password2}}
+                                <br/>
+                            <p>
+                                <input type="checkbox">
+                                By creating an account you agree to our
+                                <a href="{% url 'tc' %}">Terms and Conditions</a>
+                            </p>
+
+                            {{form.errors}}
+
+                                <button class="btn btn-block btn-primary">Sign Up</button>
+                            <p>Already have account?</p>
+                                <a href ="{% url 'login' %}" class="btn btn-primary">Login</a>
+                        </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
